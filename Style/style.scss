@@ -159,4 +159,18 @@ footer {
   padding: $spacing-unit;
   font-size: 0.9rem;
 }
-:
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+
+  &:hover .project {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .project {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+}
+
