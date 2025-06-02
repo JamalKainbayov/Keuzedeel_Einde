@@ -1,5 +1,6 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:math";
 
 $primary-color: #3498db;
 $secondary-color: #2ecc71;
@@ -12,6 +13,31 @@ $breakpoints: (
         desktop: 1024px
 );
 
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root {
+  --bg-color: #f5faff;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --primary: #3498db;
+}
+
+body.dark {
+  --bg-color: #1c1c1c;
+  --text-color: #f0f0f0;
+  --card-bg: #2c2c2c;
+  --primary: #64b5f6;
+}
+
 *,
 *::before,
 *::after {
@@ -22,9 +48,10 @@ body {
   font-family: $font-family;
   font-size: $font-size-base;
   margin: 0;
-  background-color: color.scale($primary-color, $lightness: 95%);
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer {
@@ -35,9 +62,13 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background-color: $primary-color;
   color: white;
   padding: $spacing-unit * 1.5 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   .logo {
     margin: 0;
@@ -45,7 +76,7 @@ header {
   }
 
   nav {
-    margin-top: $spacing-unit / 2;
+    margin-top: math.div($spacing-unit, 2);
 
     ul {
       list-style: none;
@@ -58,7 +89,7 @@ header {
         color: white;
         text-decoration: none;
         font-weight: 600;
-        padding: $spacing-unit / 2;
+        padding: math.div($spacing-unit, 2);
         border-radius: 4px;
 
         &.active,
@@ -78,13 +109,27 @@ header {
 }
 
 .section {
-  padding: $spacing-unit * 3 0;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 960px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease forwards;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   h2 {
     font-size: 2rem;
     margin-bottom: $spacing-unit * 1.5;
     border-bottom: 2px solid $primary-color;
-    padding-bottom: $spacing-unit / 2;
+    padding-bottom: math.div($spacing-unit, 2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -104,10 +149,12 @@ header {
     }
 
     .project {
-      background: white;
+      background-color: var(--card-bg);
+      color: var(--text-color);
       padding: $spacing-unit * 1.5;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, color 0.3s ease;
 
       h3 {
         margin-top: 0;
@@ -121,19 +168,21 @@ header {
 
   label {
     display: block;
-    margin-bottom: $spacing-unit / 4;
+    margin-bottom: math.div($spacing-unit, 4);
     font-weight: 600;
   }
 
   input,
   textarea {
     width: 100%;
-    padding: $spacing-unit / 1.2;
+    padding: math.div($spacing-unit, 1.2);
     margin-bottom: $spacing-unit * 1.5;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family: inherit;
     font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
   }
 
   button.btn {
@@ -144,10 +193,13 @@ header {
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
     &:hover {
       background-color: color.scale($primary-color, $lightness: -20%);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
     }
   }
 }
@@ -159,18 +211,99 @@ footer {
   padding: $spacing-unit;
   font-size: 0.9rem;
 }
+
 .project-link {
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease;
-
-  &:hover .project {
-    transform: scale(1.02);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  }
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   .project {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: $spacing-unit * 1.5;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  &:hover .project {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
 }
+
+.section--about {
+  background: linear-gradient(135deg, #4db2f6, #3498db);
+}
+
+.section--school {
+  background: linear-gradient(135deg, #69ff57, #2ecc71);
+}
+
+.section--work {
+  background: linear-gradient(135deg, #faaf48, #e67e22);
+}
+
+.section--hobbies {
+  background: linear-gradient(135deg, #b954fd, #8e44ad);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  float: right;
+  margin-top: -2rem;
+
+  &:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+}
+body.dark {
+  .section--about {
+    background: linear-gradient(135deg, #3686bd, #226a9c);
+  }
+
+  .section--school {
+    background: linear-gradient(135deg, #4edb3f, #249c5b);
+  }
+
+  .section--work {
+    background: linear-gradient(135deg, #d29439, #b25e14);
+  }
+
+  .section--hobbies {
+    background: linear-gradient(135deg, #963cd7, #5e2a87);
+  }
+}
+.socials {
+  margin-top: 2rem;
+  color: var(--text-color);
+}
+
+.socials h3 {
+  margin-bottom: 0.5rem;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links li a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+
+
 

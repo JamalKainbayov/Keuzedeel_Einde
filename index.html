@@ -6,43 +6,54 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="Style/style.css" />
 </head>
+
 <body>
 <header>
     <div class="footer">
-        <h1 class="logo">Jamal Kainbayov</h1>
+        <h1 class="logo">Jamal Kainbayov PALVSOD2A</h1>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">About</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
 </header>
 
 <main>
-    <section id="about" class="section about">
+    <section id="about" class="section section--about">
         <div class="footer">
             <h2>About Me</h2>
-            <p>Hello i am Jamal Kainbayov and i study software development at Techniek College Rotterdam. One of the Projects that im working on right now is making a portfolio site with the use of scss.</p>
+            <p>Hello, I am Jamal Kainbayov and I study software development at Techniek College Rotterdam. One of the projects I'm working on is making a portfolio site using SCSS. In this site I will tell you all about me and how I chose to be a software developer and what I have reached in these past years.</p>
         </div>
     </section>
 
-    <section id="contact" class="section contact">
+    <section id="school" class="section section--school">
         <div class="footer">
-            <h2>Contact Me</h2>
-            <form action="#" class="contact-form">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name" required />
+            <h2>School</h2>
+            <p>Elementary school was completed</p>
+            <p>After that I went to Mavo/Havo and in the 2nd year of high school I got Havo</p>
+            <p>I reached Havo 4 and that's where I've decided to go to MBO 4 to actually start learning my passion. In this case, Software Development</p>
+            <p>Now I am in MBO 4 Software Development at Techniek College Rotterdam and I've reached a lot of things in these years.</p>
+        </div>
+    </section>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="you@example.com" required />
+    <section id="work" class="section section--work">
+        <div class="footer">
+            <h2>Work</h2>
+            <p>My first job ever was at McDonald's</p>
+            <p>After 4 years at McDonald's, I started to work in a garage where I delivered car parts to a lot of different garages that needed them</p>
+            <p>I worked there for like 5 months. After that, I decided to join Thuisbezorgd. I like the part where I can just deliver things without a manager above my head and where I can freely do stuff.</p>
+            <p>Of course, I also had an internship where I gained some knowledge on coding and scraping. I had my internship at a company named Treehouse. I worked there for like 6 months. What they do is scraping homes and putting them on their site. I was a scraper and also worked a bit on the scraper itself.</p>
+        </div>
+    </section>
 
-                <label for="message">Message</label>
-                <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
-
-                <button type="submit" class="btn">Send</button>
-            </form>
+    <section id="hobbies" class="section section--hobbies">
+        <div class="footer">
+            <h2>Hobbies</h2>
+            <p>I enjoy a lot of stuff. I like: coding, gaming, travelling, listening to music and I also like eating. I'm a real foodie when it comes to different cuisines. I also like to explore a lot of the world and its culture. There is a whole adventure waiting for me in the future. Also, if I just chill at home, I listen to music and do some coding. Eventually after coding, I like to play games with friends.</p>
         </div>
     </section>
 </main>
@@ -52,5 +63,21 @@
         <p>© 2025 Jamal Kainbayov. All rights reserved.</p>
     </div>
 </footer>
+
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const newTheme = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+    });
+</script>
+
 </body>
 </html>

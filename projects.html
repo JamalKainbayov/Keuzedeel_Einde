@@ -1,44 +1,91 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Projects</title>
-    <link rel="stylesheet" href="Style/style.css"/>
+    <link rel="stylesheet" href="Style/style.css" />
 </head>
 <body>
-<section id="projects" class="section projects">
+<header>
     <div class="footer">
-        <h2>Projects</h2>
+        <h1 class="logo">Jamal Kainbayov PALVSOD2A</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+</header>
+
+<section id="projects" class="section projects section--work">
+    <div class="footer">
+        <h2>My Projects</h2>
         <div class="project-list">
-            <a href="#" class="project-link">
+            <a href="https://youtu.be/MxEjnYdfLXU?si=swbvbly_0ozwLmQ0" class="project-link" target="_blank">
                 <article class="project">
-                    <h3>Project One</h3>
-                    <p>A portfolio site about me that was made when I started with HTML/CSS and nothing else.</p>
-                </article>
-            </a>
-            <a href="#" class="project-link">
-                <article class="project">
-                    <h3>Project Two</h3>
-                    <p>A responsive website with HTML, CSS, and JavaScript for Techniek College Rotterdam where there is a countdown for the opendag.</p>
-                </article>
-            </a>
-            <a href="#" class="project-link">
-                <article class="project">
-                    <h3>Project Three</h3>
-                    <p>A Twitter clone made by using PHP, HTML, CSS, JavaScript and MySQL.</p>
+                    <h3>🎵 Portfolio</h3>
+                    <p>A simple HTML/CSS portfolio — my first Git experience. Couldn't find the repo, so here's some music instead.</p>
                 </article>
             </a>
             <a href="https://github.com/JamalKainbayov/Project-2" class="project-link" target="_blank">
                 <article class="project">
-                    <h3>Project Four</h3>
-                    <p>Here I made a WordPress site for an artist (also the neighbour of Gaag). He rated all our sites and would give us a painting for the best WordPress site.</p>
+                    <h3>🧠 JavaScript Team Project</h3>
+                    <p>Worked in a group of 3 to build a combined site with a quiz, chatbot, and skill tree. I created the quiz.</p>
+                </article>
+            </a>
+            <a href="https://github.com/JamalKainbayov/Project-3" class="project-link" target="_blank">
+                <article class="project">
+                    <h3>🐦 Twitter Clone</h3>
+                    <p>Team project to clone Twitter using PHP and MySQL. Learned to collaborate on a single shared codebase.</p>
+                </article>
+            </a>
+            <a href="https://github.com/JamalKainbayov/Project-4" class="project-link" target="_blank">
+                <article class="project">
+                    <h3>🎨 Wordpress Artist Site</h3>
+                    <p>Built a WordPress site for a real artist. The top project won a custom painting from him. Great hands-on experience.</p>
+                </article>
+            </a>
+            <a href="https://github.com/JamalKainbayov/Project-5" class="project-link" target="_blank">
+                <article class="project">
+                    <h3>🍪 Cookie Clicker Clone</h3>
+                    <p>Used object-oriented JavaScript to create a cookie clicker game. Learned structure, design, and logic separation.</p>
+                </article>
+            </a>
+            <a href="https://github.com/JamalKainbayov/Kotlin" class="project-link" target="_blank">
+                <article class="project">
+                    <h3>📱 Kotlin Android App</h3>
+                    <p>Created an Android order app with Kotlin and SQLite database integration. Learned mobile app dev basics.</p>
                 </article>
             </a>
         </div>
     </div>
 </section>
+
+
+<footer>
+    <div class="footer">
+        <p>© 2025 Jamal Kainbayov. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const newTheme = body.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+    });
+</script>
 </body>
 </html>

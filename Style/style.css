@@ -1,3 +1,27 @@
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root {
+  --bg-color: #f5faff;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --primary: #3498db;
+}
+
+body.dark {
+  --bg-color: #1c1c1c;
+  --text-color: #f0f0f0;
+  --card-bg: #2c2c2c;
+  --primary: #64b5f6;
+}
+
 *,
 *::before,
 *::after {
@@ -8,9 +32,10 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   margin: 0;
-  background-color: rgb(244.85, 249.85, 253.2);
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer {
@@ -21,9 +46,13 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background-color: #3498db;
   color: white;
   padding: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 header .logo {
   margin: 0;
@@ -57,13 +86,27 @@ header nav ul li a.active, header nav ul li a:hover {
 }
 
 .section {
-  padding: 3rem 0;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 960px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease forwards;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .section h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #3498db;
   padding-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .about p {
@@ -82,10 +125,12 @@ header nav ul li a.active, header nav ul li a:hover {
   }
 }
 .projects .project-list .project {
-  background: white;
+  background-color: var(--card-bg);
+  color: var(--text-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .projects .project-list .project h3 {
   margin-top: 0;
@@ -108,6 +153,8 @@ header nav ul li a.active, header nav ul li a:hover {
   border-radius: 4px;
   font-family: inherit;
   font-size: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
 }
 .contact-form button.btn {
   background-color: #3498db;
@@ -117,10 +164,13 @@ header nav ul li a.active, header nav ul li a:hover {
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .contact-form button.btn:hover {
   background-color: rgb(32.6560669456, 123.3673640167, 184.1439330544);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 footer {
@@ -134,14 +184,87 @@ footer {
 .project-link {
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease;
-}
-.project-link:hover .project {
-  transform: scale(1.02);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-link .project {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-link:hover .project {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.section--about {
+  background: linear-gradient(135deg, #4db2f6, #3498db);
+}
+
+.section--school {
+  background: linear-gradient(135deg, #69ff57, #2ecc71);
+}
+
+.section--work {
+  background: linear-gradient(135deg, #faaf48, #e67e22);
+}
+
+.section--hobbies {
+  background: linear-gradient(135deg, #b954fd, #8e44ad);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  float: right;
+  margin-top: -2rem;
+}
+.theme-toggle:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+body.dark .section--about {
+  background: linear-gradient(135deg, #3686bd, #226a9c);
+}
+body.dark .section--school {
+  background: linear-gradient(135deg, #4edb3f, #249c5b);
+}
+body.dark .section--work {
+  background: linear-gradient(135deg, #d29439, #b25e14);
+}
+body.dark .section--hobbies {
+  background: linear-gradient(135deg, #963cd7, #5e2a87);
+}
+
+.socials {
+  margin-top: 2rem;
+  color: var(--text-color);
+}
+
+.socials h3 {
+  margin-bottom: 0.5rem;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links li a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 /*# sourceMappingURL=style.css.map */
