@@ -1,0 +1,62 @@
+:root {
+  --bg-color: #f5faff;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --primary: #3498db;
+}
+
+body.dark {
+  --bg-color: #1c1c1c;
+  --text-color: #f0f0f0;
+  --card-bg: #2c2c2c;
+  --primary: #64b5f6;
+
+  .section--about {
+    background: linear-gradient(135deg, #3686bd, #226a9c);
+  }
+
+  .section--school {
+    background: linear-gradient(135deg, #4edb3f, #249c5b);
+  }
+
+  .section--work {
+    background: linear-gradient(135deg, #d29439, #b25e14);
+  }
+
+  .section--hobbies {
+    background: linear-gradient(135deg, #963cd7, #5e2a87);
+  }
+}
+
+.section--about {
+  background: linear-gradient(135deg, #4db2f6, #3498db);
+}
+
+.section--school {
+  background: linear-gradient(135deg, #69ff57, #2ecc71);
+}
+
+.section--work {
+  background: linear-gradient(135deg, #faaf48, #e67e22);
+}
+
+.section--hobbies {
+  background: linear-gradient(135deg, #b954fd, #8e44ad);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  float: right;
+  margin-top: -2rem;
+
+  &:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+}

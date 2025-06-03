@@ -1,0 +1,17 @@
+@use "../abstracts/variables" as *;
+@use "sass:color";
+
+.footer {
+  width: 90%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  background-color: color.scale($primary-color, $lightness: 20%);
+  color: white;
+  text-align: center;
+  padding: $spacing-unit;
+  font-size: 0.9rem;
+}

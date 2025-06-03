@@ -1,0 +1,25 @@
+@use "../abstracts/variables" as *;
+@use "sass:math";
+
+.contact-form {
+  max-width: 600px;
+
+  label {
+    display: block;
+    margin-bottom: math.div($spacing-unit, 4);
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: math.div($spacing-unit, 1.2);
+    margin-bottom: $spacing-unit * 1.5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
+}

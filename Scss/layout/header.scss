@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as *;
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $primary-color;
+  color: white;
+  padding: $spacing-unit * 1.5 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  nav {
+    margin-top: math.div($spacing-unit, 2);
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: $spacing-unit * 2;
+
+      li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: math.div($spacing-unit, 2);
+        border-radius: 4px;
+
+        &.active,
+        &:hover {
+          background-color: color.scale($secondary-color, $lightness: 30%);
+        }
+      }
+    }
+  }
+
+  @media (max-width: map.get($breakpoints, tablet)) {
+    nav ul {
+      flex-direction: column;
+      gap: $spacing-unit;
+    }
+  }
+}
