@@ -28,7 +28,7 @@
 
         &:hover,
         &.active {
-          background-color: lighten($secondary-color, 15%);
+          background-color: color.adjust($secondary-color, $lightness: 15%);
         }
       }
     }
