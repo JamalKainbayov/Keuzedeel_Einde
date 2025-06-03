@@ -49,3 +49,8 @@ header {
     }
   }
 }
+
+body.dark header {
+  background-color: color.scale($primary-color, $lightness: -20%);
+}
+
