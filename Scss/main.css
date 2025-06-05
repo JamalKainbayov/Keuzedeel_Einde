@@ -146,6 +146,29 @@ button.btn:hover {
   transform: translateY(-2px);
 }
 
+.download-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.download-btn:hover {
+  background-color: #0056b3;
+}
+
+body.dark .download-btn {
+  background-color: #66aaff;
+  color: #000;
+}
+body.dark .download-btn:hover {
+  background-color: #5599dd;
+}
+
 .contact-form {
   max-width: 600px;
 }
